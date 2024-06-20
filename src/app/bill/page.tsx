@@ -1,14 +1,16 @@
 'use client'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 function Bill() {
     const seachParams = useSearchParams()
-    const budget: any = seachParams.get('budget')
-    const students = seachParams.get('students')
+    let [budget,setBudget] : any = useState(seachParams.get('budget'))
+    let [students,setStudents] : any = useState(seachParams.get('students'))
+    let [veg, setVeg] = useState(0)
 
-    let items = [
+    let [items, setItems] = useState([
         {
             qty: 0,
             name: 'Potato',
@@ -100,62 +102,63 @@ function Bill() {
             total: 0,
             individualRate: 0.77
         },
-    ]
+    ])
+
 
     let total = 0
-
     items.map((item) => {
-        item.qty = Math.floor((81 * 85.54 * item.individualRate) / item.rate)
+        item.qty = Math.floor((students * 85.54 * item.individualRate) / item.rate)
         item.total = item.qty * item.rate
         total += item.total
     }
     )
+    
+    useEffect(() => {
+        setVeg(budget-total)
 
-    const veg = budget - total
-
-
+    }, [budget])
     return (
-        
-            <div>
-                <h1 className="p-4 text-lg font-semibold">Number of students: {students}</h1>
-                <Table>
 
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead className="w-[100px] ">Quantity</TableHead>
-                            <TableHead>Item name</TableHead>
-                            <TableHead>Rate</TableHead>
-                            <TableHead className="text-right">Amount</TableHead>
+        <div>
+            <h1 className="p-4 text-lg font-semibold">Number of students: {students}</h1>
+            <Table>
+
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="w-[100px] ">Quantity</TableHead>
+                        <TableHead>Item name</TableHead>
+                        <TableHead>Rate</TableHead>
+                        <TableHead className="text-right">Amount</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {items.map((item, index) => (
+                        <TableRow key={index}>
+                            <TableCell className="font-medium">{item.qty}</TableCell>
+                            <TableCell>{item.name}</TableCell>
+                            <TableCell>{item.rate}</TableCell>
+                            <TableCell className="text-right">{item.total}</TableCell>
                         </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {items.map((item, index) => (
-                            <TableRow key={index}>
-                                <TableCell className="font-medium">{item.qty}</TableCell>
-                                <TableCell>{item.name}</TableCell>
-                                <TableCell>{item.rate}</TableCell>
-                                <TableCell className="text-right">{item.total}</TableCell>
-                            </TableRow>
-                        ))}
+                    ))}
 
-                        <TableRow>
-                            <TableCell className="">-</TableCell>
-                            <TableCell>Veg</TableCell>
-                            <TableCell>-</TableCell>
-                            <TableCell className="text-right">{veg}</TableCell>
-                        </TableRow>
+                    <TableRow>
+                        <TableCell className="">-</TableCell>
+                        <TableCell>Veg</TableCell>
+                        <TableCell>-</TableCell>
+                        <TableCell className="text-right">{veg}</TableCell>
+                    </TableRow>
 
-                        <TableRow>
-                            <TableCell className="font-bold text-lg">Total</TableCell>
-                            <TableCell></TableCell>
-                            <TableCell></TableCell>
-                            <TableCell className="text-right font-bold text-lg">{budget}</TableCell>
-                        </TableRow>
+                    <TableRow>
+                        <TableCell className="font-bold text-lg">Total</TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell className="text-right font-bold text-lg">{budget}</TableCell>
+                    </TableRow>
 
-                    </TableBody>
-                </Table>
-            </div>
-        
+                </TableBody>
+            </Table>
+        </div>
+
     )
 }
 
