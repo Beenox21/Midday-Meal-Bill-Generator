@@ -1,10 +1,11 @@
 'use client'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react';
 
 function Bill() {
     const seachParams = useSearchParams()
-    const budget : any = seachParams.get('budget')
+    const budget: any = seachParams.get('budget')
     const students = seachParams.get('students')
 
     let items = [
@@ -109,50 +110,52 @@ function Bill() {
         total += item.total
     }
     )
-    
+
     const veg = budget - total
 
 
     return (
-        <div>
-            <h1 className="p-4 text-lg font-semibold">Number of students: {students}</h1>
-            <Table>
-    
-                <TableHeader>
-                    <TableRow>
-                        <TableHead className="w-[100px] ">Quantity</TableHead>
-                        <TableHead>Item name</TableHead>
-                        <TableHead>Rate</TableHead>
-                        <TableHead className="text-right">Amount</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {items.map((item,index) => (
-                        <TableRow key={index}>
-                            <TableCell className="font-medium">{item.qty}</TableCell>
-                            <TableCell>{item.name}</TableCell>
-                            <TableCell>{item.rate}</TableCell>
-                            <TableCell className="text-right">{item.total}</TableCell>
+        <Suspense  fallback={<div>Loading...</div>}>
+            <div>
+                <h1 className="p-4 text-lg font-semibold">Number of students: {students}</h1>
+                <Table>
+
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="w-[100px] ">Quantity</TableHead>
+                            <TableHead>Item name</TableHead>
+                            <TableHead>Rate</TableHead>
+                            <TableHead className="text-right">Amount</TableHead>
                         </TableRow>
-                    ))}
+                    </TableHeader>
+                    <TableBody>
+                        {items.map((item, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{item.qty}</TableCell>
+                                <TableCell>{item.name}</TableCell>
+                                <TableCell>{item.rate}</TableCell>
+                                <TableCell className="text-right">{item.total}</TableCell>
+                            </TableRow>
+                        ))}
 
-                    <TableRow>
-                        <TableCell className="">-</TableCell>
-                        <TableCell>Veg</TableCell>
-                        <TableCell>-</TableCell>
-                        <TableCell className="text-right">{veg}</TableCell>
-                    </TableRow>
+                        <TableRow>
+                            <TableCell className="">-</TableCell>
+                            <TableCell>Veg</TableCell>
+                            <TableCell>-</TableCell>
+                            <TableCell className="text-right">{veg}</TableCell>
+                        </TableRow>
 
-                    <TableRow>
-                        <TableCell className="font-bold text-lg">Total</TableCell>
-                        <TableCell></TableCell>
-                        <TableCell></TableCell>
-                        <TableCell className="text-right font-bold text-lg">{budget}</TableCell>
-                    </TableRow>
+                        <TableRow>
+                            <TableCell className="font-bold text-lg">Total</TableCell>
+                            <TableCell></TableCell>
+                            <TableCell></TableCell>
+                            <TableCell className="text-right font-bold text-lg">{budget}</TableCell>
+                        </TableRow>
 
-                </TableBody>
-            </Table>
-        </div>
+                    </TableBody>
+                </Table>
+            </div>
+        </Suspense>
     )
 }
 
