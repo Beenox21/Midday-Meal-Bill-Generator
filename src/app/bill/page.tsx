@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 
 function Bill() {
     const seachParams = useSearchParams()
-    const budget = seachParams.get('budget')
+    const budget : any = seachParams.get('budget')
     const students = seachParams.get('students')
 
     let items = [
