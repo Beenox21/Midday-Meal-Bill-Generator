@@ -1,7 +1,7 @@
 'use client'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from 'react';
+
 
 function Bill() {
     const seachParams = useSearchParams()
@@ -115,7 +115,7 @@ function Bill() {
 
 
     return (
-        <Suspense  fallback={<div>Loading...</div>}>
+        
             <div>
                 <h1 className="p-4 text-lg font-semibold">Number of students: {students}</h1>
                 <Table>
@@ -155,7 +155,7 @@ function Bill() {
                     </TableBody>
                 </Table>
             </div>
-        </Suspense>
+        
     )
 }
 
