@@ -121,8 +121,8 @@ function Bill() {
 
         <div>
             <h1 className="p-4 text-lg font-semibold">Number of students: {students}</h1>
-            <h1 className="p-4 text-lg font-semibold">Number of days: 85.54</h1>
-            <h1 className="p-4 text-lg font-semibold">School: Primary</h1>
+            <h1 className="px-4 text-lg font-semibold">Number of days: 85.54</h1>
+            <h1 className="px-4 text-lg font-semibold">School: Primary</h1>
             <Table>
 
                 <TableHeader>
