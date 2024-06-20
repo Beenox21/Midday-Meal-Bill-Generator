@@ -127,8 +127,8 @@ function Bill() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {items.map((item) => (
-                        <TableRow>
+                    {items.map((item,index) => (
+                        <TableRow key={index}>
                             <TableCell className="font-medium">{item.qty}</TableCell>
                             <TableCell>{item.name}</TableCell>
                             <TableCell>{item.rate}</TableCell>
