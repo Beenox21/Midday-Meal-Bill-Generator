@@ -120,9 +120,9 @@ function Bill() {
     return (
 
         <div>
-            <h1 className="pt-4 px-4 font-semibold">Number of students: {students}</h1>
-            <h1 className="px-4  font-semibold">Number of days: 85.54</h1>
-            <h1 className="px-4 font-semibold">School: Primary</h1>
+            <h1 className="pt-4 px-4">Number of students: {students}</h1>
+            <h1 className="px-4  ">Number of days: 85.54</h1>
+            <h1 className="px-4 ">School: Primary</h1>
             <Table>
 
                 <TableHeader>
