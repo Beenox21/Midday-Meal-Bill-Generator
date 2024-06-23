@@ -18,7 +18,7 @@ export default function Home() {
     }
   )
 
-  let [numberOfDays, setNumberOfDays] = useState(113)
+  let [numberOfDays, setNumberOfDays] = useState(85.54)
   
   return (
     <div className="flex md:p-10 h-[100vh] bg-slate-100">
@@ -51,7 +51,7 @@ export default function Home() {
         <div className="space-y-1">
           <h1 className="font-semibold md:text-lg">Number of days</h1>
           <Input type="number" className="h-14" placeholder="no. of days" defaultValue={numberOfDays} 
-          onChange={(e) => setNumberOfDays(parseInt(e.target.value))}/>
+          onChange={(e) => setNumberOfDays(parseFloat(e.target.value))}/>
         </div>
 
         <div>

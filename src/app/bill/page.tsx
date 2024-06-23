@@ -150,6 +150,7 @@ function Bill() {
     ]
 
     const numberOfDays : any = searchParams.get('days')
+    // const numberOfDays = 85.54
 
     let totalPrimary = 0
     let totalUpperPrimary = 0
@@ -182,7 +183,7 @@ function Bill() {
     return (
 
         <div className="mt-3"> 
-            <h1 className="text-xl text-slate-700 font-bold text-center pt-2 pb-4">MIDDAY MEAL 2023-2024</h1>
+            <h1 className="text-xl text-slate-700 font-bold text-center pt-2 pb-4">MIDDAY MEAL 2022-2023</h1>
             <h1 className="px-4 text-lg text-slate-600 font-bold">Primary Section</h1>
             <h1 className="px-4 text-slate-500 ">Number of students: {students.primary}</h1>
             <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1>
