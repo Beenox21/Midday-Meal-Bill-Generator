@@ -182,7 +182,7 @@ function Bill() {
     return (
 
         <div className="mt-3"> 
-            <h1 className="text-xl text-slate-700 font-bold text-center py-2">MIDDAY MEAL 2023-2024</h1>
+            <h1 className="text-lg text-slate-700 font-bold text-center pt-2 pb-3">MIDDAY MEAL 2023-2024</h1>
             <h1 className="px-4 text-lg text-slate-600 font-bold">Primary Section</h1>
             <h1 className="px-4 text-slate-500 ">Number of students: {students.primary}</h1>
             <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1>
