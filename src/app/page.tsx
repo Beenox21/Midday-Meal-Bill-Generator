@@ -18,7 +18,7 @@ export default function Home() {
     }
   )
 
-  let [numberOfDays, setNumberOfDays] = useState(85.54)
+  let [numberOfDays, setNumberOfDays] = useState(113)
   
   return (
     <div className="flex md:p-10 h-[100vh] bg-slate-100">
