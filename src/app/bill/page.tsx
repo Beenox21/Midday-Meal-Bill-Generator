@@ -181,53 +181,11 @@ function Bill() {
 
     return (
 
-        <div className="mt-3"> 
-            <h1 className="text-2xl text-slate-700 font-bold text-center py-2">MIDDAY MEAL 2023-2024</h1>
-            <h1 className="px-4 text-lg text-slate-600 font-bold">Primary Section</h1>
-            <h1 className="px-4 text-slate-500 ">Number of students: {students.primary}</h1>
-            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1>
-            <Table className="border-t-2 mt-5">
-
-                <TableHeader>
-                    <TableRow>
-                        <TableHead className="w-[100px] ">Quantity</TableHead>
-                        <TableHead>Item name</TableHead>
-                        <TableHead>Rate</TableHead>
-                        <TableHead className="text-right">Amount</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {items.map((item : any, index : any) => (
-                        <TableRow key={index}>
-                            <TableCell className="font-medium">{item.qtyPrimary}</TableCell>
-                            <TableCell>{item.name}</TableCell>
-                            <TableCell>{item.rate}</TableCell>
-                            <TableCell className="text-right">{item.totalPrimary}</TableCell>
-                        </TableRow>
-                    ))}
-
-                    <TableRow>
-                        <TableCell className="">-</TableCell>
-                        <TableCell>Veg</TableCell>
-                        <TableCell>-</TableCell>
-                        <TableCell className="text-right">{veg.primary}</TableCell>
-                    </TableRow>
-
-                    <TableRow>
-                        <TableCell className="font-bold text-lg">Total</TableCell>
-                        <TableCell></TableCell>
-                        <TableCell></TableCell>
-                        <TableCell className="text-right font-bold text-lg">{budget.primary}</TableCell>
-                    </TableRow>
-
-                </TableBody>
-            </Table>
-
-
-            <h1 className="px-4  font-bold text-slate-600 text-lg  mt-3  border-t-2 pt-5">Upper Primary Section</h1>
-            <h1 className="px-4 text-slate-500 ">Number of students: {students.upperPrimary}</h1>
-            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1>
-            <Table className="border-t-2 mt-5">
+        <div>
+            <h1 className="p-4 text-lg font-semibold">Number of students: {students}</h1>
+            <h1 className="px-4 text-lg font-semibold">Number of days: 85.54</h1>
+            <h1 className="px-4 text-lg font-semibold">School: Primary</h1>
+            <Table>
 
                 <TableHeader>
                     <TableRow>
