@@ -225,7 +225,7 @@ function Bill() {
 
                     <TableRow>
                         <TableCell className="">-</TableCell>
-                        <TableCell>Veg</TableCell>
+                        <TableCell>G. Vegetables</TableCell>
                         <TableCell>-</TableCell>
                         <TableCell className="text-right">{veg.primary}</TableCell>
                     </TableRow>
