@@ -158,8 +158,16 @@ function Bill() {
         item.qtyPrimary = Math.floor((students.primary * numberOfDays * item.individualRatePrimary) / item.rate)
         item.totalPrimary = item.qtyPrimary * item.rate
         totalPrimary += item.totalPrimary
+        if(item.name === 'Mustard Oil')
+            item.qtyPrimary += ' ltr'
+        else if(item.name === 'Egg')
+            item.qtyPrimary += ' pcs'
+        else if(item.name === 'Firewood')
+            item.qtyPrimary += ' trip'
+        else 
+            item.qtyPrimary += ' kg'
 
-        item.qtyUPrimary = Math.floor((students.upperPrimary * numberOfDays * item.individualRateUpperPrimary) / item.rate)
+        item.qtyUPrimary = Math.ceil((students.upperPrimary * numberOfDays * item.individualRateUpperPrimary) / item.rate)
         item.totalUpperPrimary = item.qtyUPrimary * item.rate 
         if(item.name === 'Mustard Oil')
             item.qtyUPrimary += ' ltr'
@@ -169,6 +177,7 @@ function Bill() {
             item.qtyUPrimary += ' trip'
         else 
             item.qtyUPrimary += ' kg'
+        
         totalUpperPrimary += item.totalUpperPrimary
      }
     )
@@ -190,11 +199,11 @@ function Bill() {
     return (
 
         <div className="mt-3"> 
-            {/* <h1 className="text-xl text-slate-700 font-bold text-center pt-2 pb-4">MIDDAY MEAL 2023-2024</h1>
+            <h1 className="text-xl text-slate-700 font-bold text-center pt-2 pb-4">MIDDAY MEAL 2023-2024</h1>
             <h1 className="px-4 text-lg text-slate-600 font-bold">Primary Section</h1>
             <h1 className="px-4 text-slate-500 ">Number of students: {students.primary}</h1>
-            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1> */}
-            <Table className="hidden border-t-[1px] mt-5">
+            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1>
+            <Table className=" border-t-[1px] mt-5">
 
                 <TableHeader>
                     <TableRow>
@@ -232,10 +241,10 @@ function Bill() {
             </Table>
 
 
-            <h1 className="px-4  font-bold text-slate-600 text-lg  mt-3  border-t-2 pt-5">Upper Primary Section</h1>
+            {/* <h1 className="px-4  font-bold text-slate-600 text-lg  mt-3  border-t-2 pt-5">Upper Primary Section</h1>
             <h1 className="px-4 text-slate-500 ">Number of students: {students.upperPrimary}</h1>
-            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1>
-            <Table className="border-t-[1px] mt-5">
+            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1> */}
+            <Table className="hidden border-t-[1px] mt-5">
 
                 <TableHeader>
                     <TableRow>
