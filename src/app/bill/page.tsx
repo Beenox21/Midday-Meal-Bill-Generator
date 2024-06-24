@@ -44,13 +44,13 @@ function Bill() {
             rate: 15,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.16,
-            individualRateUpperPrimary : 0.22
+            individualRatePrimary: 0.12,
+            individualRateUpperPrimary : 0.14
         },
         {
             qtyPrimary : 0,
             qtyUPrimary : 0,
-            name: 'Dal',
+            name: 'Masoor Dal',
             rate: 90,
             totalPrimary: 0,
             totalUpperPrimary : 0,
@@ -60,7 +60,7 @@ function Bill() {
         {
             qtyPrimary : 0,
             qtyUPrimary : 0,
-            name: 'Oil',
+            name: 'Mustard Oil',
             rate: 130,
             totalPrimary: 0,
             totalUpperPrimary : 0,
@@ -80,7 +80,7 @@ function Bill() {
         {
             qtyPrimary : 0,
             qtyUPrimary : 0,
-            name: 'Peas',
+            name: 'Dry Peas',
             rate: 80,
             totalPrimary: 0,
             totalUpperPrimary : 0,
@@ -90,7 +90,7 @@ function Bill() {
         {
             qtyPrimary : 0,
             qtyUPrimary : 0,
-            name: 'Chilly',
+            name: 'Dry Chilly',
             rate: 260,
             totalPrimary: 0,
             totalUpperPrimary : 0,
@@ -110,7 +110,7 @@ function Bill() {
         {
             qtyPrimary : 0,
             qtyUPrimary : 0,
-            name: 'Haldi',
+            name: 'Haldi Powder',
             rate: 300,
             totalPrimary: 0,
             totalUpperPrimary : 0,
@@ -120,7 +120,7 @@ function Bill() {
         {
             qtyPrimary : 0,
             qtyUPrimary : 0,
-            name: 'Masala',
+            name: 'Sabji Masala',
             rate: 330,
             totalPrimary: 0,
             totalUpperPrimary : 0,
@@ -130,7 +130,7 @@ function Bill() {
         {
             qtyPrimary : 0,
             qtyUPrimary : 0,
-            name: 'Pooran',
+            name: 'Pas Pooran',
             rate: 380,
             totalPrimary: 0,
             totalUpperPrimary : 0,
@@ -160,7 +160,15 @@ function Bill() {
         totalPrimary += item.totalPrimary
 
         item.qtyUPrimary = Math.floor((students.upperPrimary * numberOfDays * item.individualRateUpperPrimary) / item.rate)
-        item.totalUpperPrimary = item.qtyUPrimary * item.rate
+        item.totalUpperPrimary = item.qtyUPrimary * item.rate 
+        if(item.name === 'Mustard Oil')
+            item.qtyUPrimary += ' ltr'
+        else if(item.name === 'Egg')
+            item.qtyUPrimary += ' pcs'
+        else if(item.name === 'Firewood')
+            item.qtyUPrimary += ' trip'
+        else 
+            item.qtyUPrimary += ' kg'
         totalUpperPrimary += item.totalUpperPrimary
      }
     )
@@ -182,11 +190,11 @@ function Bill() {
     return (
 
         <div className="mt-3"> 
-            <h1 className="text-xl text-slate-700 font-bold text-center pt-2 pb-4">MIDDAY MEAL 2023-2024</h1>
+            {/* <h1 className="text-xl text-slate-700 font-bold text-center pt-2 pb-4">MIDDAY MEAL 2023-2024</h1>
             <h1 className="px-4 text-lg text-slate-600 font-bold">Primary Section</h1>
             <h1 className="px-4 text-slate-500 ">Number of students: {students.primary}</h1>
-            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1>
-            <Table className="border-t-[1px] mt-5">
+            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1> */}
+            <Table className="hidden border-t-[1px] mt-5">
 
                 <TableHeader>
                     <TableRow>
@@ -249,7 +257,7 @@ function Bill() {
 
                     <TableRow>
                         <TableCell className="">-</TableCell>
-                        <TableCell>Veg</TableCell>
+                        <TableCell>G. Vegetables</TableCell>
                         <TableCell>-</TableCell>
                         <TableCell className="text-right">{veg.upperPrimary}</TableCell>
                     </TableRow>
