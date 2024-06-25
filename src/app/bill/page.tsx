@@ -44,7 +44,7 @@ function Bill() {
             rate: 15,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.04,
+            individualRatePrimary: 0.05,
             individualRateUpperPrimary : 0.09
         },
         {
