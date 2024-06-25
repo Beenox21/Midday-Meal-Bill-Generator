@@ -25,7 +25,7 @@ export default function Home() {
       <div className="w-full md:border-2 p-4 md:rounded-lg  bg-opacity-40 space-y-5">
         <h1 className="text-center py-2 font-bold text-lg md:text-xl">MIDDAY MEAL BILL GENERATOR</h1>
         
-        <div className="space-y-1">
+        {/* <div className="space-y-1">
           <h1 className="font-semibold md:text-lg">Budget for Primary Section</h1>
           <Input type="number" className="h-14" placeholder="budget amount" 
           onChange={(e) => setBudget((budget) => ({...budget, primary: parseInt(e.target.value)}))}/>
@@ -35,7 +35,7 @@ export default function Home() {
           <h1 className="font-semibold md:text-lg">Number of students in Primary section</h1>
           <Input type="number" className="h-14" placeholder="no. of students" 
           onChange={(e) => setStudents((preStudents) => ({...preStudents, primary : parseInt(e.target.value)}))}/>
-        </div>
+        </div> */}
 
         <div className="space-y-1">
           <h1 className="font-semibold md:text-lg">Budget for Upper Primary Section</h1>
