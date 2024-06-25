@@ -45,7 +45,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.12,
-            individualRateUpperPrimary : 0.14
+            individualRateUpperPrimary : 0.09
         },
         {
             qtyPrimary : 0,
@@ -75,7 +75,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.29,
-            individualRateUpperPrimary : 0.55
+            individualRateUpperPrimary : 0.60
         },
         {
             qtyPrimary : 0,
@@ -85,7 +85,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.23,
-            individualRateUpperPrimary : 0.40
+            individualRateUpperPrimary : 0.50
         },
         {
             qtyPrimary : 0,
@@ -95,7 +95,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.16,
-            individualRateUpperPrimary : 0.25
+            individualRateUpperPrimary : 0.05
         },
         {
             qtyPrimary : 0,
@@ -105,7 +105,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.90,
-            individualRateUpperPrimary : 0.95
+            individualRateUpperPrimary : 1.2
         },
         {
             qtyPrimary : 0,
@@ -115,7 +115,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.17,
-            individualRateUpperPrimary : 0.27
+            individualRateUpperPrimary : 0.08
         },
         {
             qtyPrimary : 0,
@@ -125,7 +125,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.20,
-            individualRateUpperPrimary : 0.37
+            individualRateUpperPrimary : 0.12
         },
         {
             qtyPrimary : 0,
@@ -135,7 +135,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.14,
-            individualRateUpperPrimary : 0.10
+            individualRateUpperPrimary : 0.05
         },
         {
             qtyPrimary : 0,
@@ -145,7 +145,7 @@ function Bill() {
             totalPrimary: 0,
             totalUpperPrimary : 0,
             individualRatePrimary: 0.77,
-            individualRateUpperPrimary : 0.87
+            individualRateUpperPrimary : 0.3
         },
     ]
 
@@ -155,7 +155,7 @@ function Bill() {
     let totalUpperPrimary = 0
 
     items.map((item : any) => {
-        item.qtyPrimary = Math.floor((students.primary * numberOfDays * item.individualRatePrimary) / item.rate)
+        item.qtyPrimary = Math.round((students.primary * numberOfDays * item.individualRatePrimary) / item.rate)
         item.totalPrimary = item.qtyPrimary * item.rate
         totalPrimary += item.totalPrimary
         if(item.name === 'Mustard Oil')
@@ -241,10 +241,10 @@ function Bill() {
             </Table>
 
 
-            {/* <h1 className="px-4  font-bold text-slate-600 text-lg  mt-3  border-t-2 pt-5">Upper Primary Section</h1>
+            <h1 className="px-4  font-bold text-slate-600 text-lg  mt-3  border-t-2 pt-5">Upper Primary Section</h1>
             <h1 className="px-4 text-slate-500 ">Number of students: {students.upperPrimary}</h1>
-            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1> */}
-            <Table className="hidden border-t-[1px] mt-5">
+            <h1 className="px-4 text-slate-500 ">Number of days: {numberOfDays}</h1>
+            <Table className="border-t-[1px] mt-5">
 
                 <TableHeader>
                     <TableRow>
