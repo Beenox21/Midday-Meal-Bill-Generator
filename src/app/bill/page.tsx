@@ -44,7 +44,7 @@ function Bill() {
             rate: 15,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.12,
+            individualRatePrimary: 0.04,
             individualRateUpperPrimary : 0.09
         },
         {
@@ -94,7 +94,7 @@ function Bill() {
             rate: 260,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.16,
+            individualRatePrimary: 0.05,
             individualRateUpperPrimary : 0.05
         },
         {
@@ -104,7 +104,7 @@ function Bill() {
             rate: 8,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.90,
+            individualRatePrimary: 1.50,
             individualRateUpperPrimary : 2.4
         },
         {
@@ -114,7 +114,7 @@ function Bill() {
             rate: 300,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.17,
+            individualRatePrimary: 0.1,
             individualRateUpperPrimary : 0.08
         },
         {
@@ -124,7 +124,7 @@ function Bill() {
             rate: 330,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.20,
+            individualRatePrimary: 0.10,
             individualRateUpperPrimary : 0.08
         },
         {
@@ -134,7 +134,7 @@ function Bill() {
             rate: 380,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.14,
+            individualRatePrimary: 0.1,
             individualRateUpperPrimary : 0.05
         },
         {
@@ -144,7 +144,7 @@ function Bill() {
             rate: 2000,
             totalPrimary: 0,
             totalUpperPrimary : 0,
-            individualRatePrimary: 0.77,
+            individualRatePrimary: 0.5,
             individualRateUpperPrimary : 0.3
         },
     ]
