@@ -155,7 +155,7 @@ function Bill() {
     let totalUpperPrimary = 0
 
     items.map((item : any) => {
-        item.qtyPrimary = Math.round((students.primary * numberOfDays * item.individualRatePrimary) / item.rate)
+        item.qtyPrimary = Math.ceil((students.primary * numberOfDays * item.individualRatePrimary) / item.rate)
         item.totalPrimary = item.qtyPrimary * item.rate
         totalPrimary += item.totalPrimary
         if(item.name === 'Mustard Oil')
