@@ -192,18 +192,10 @@ function Bill() {
     )
 
     
-    let [veg, setVeg] = useState({
-        primary : 0,
-        upperPrimary : 0
-    })
-    
-    useEffect(() => {
-        setVeg({
-            primary : budget.primary-totalPrimary,
-            upperPrimary : budget.upperPrimary-totalUpperPrimary,
-        })
-
-    }, [])
+    let veg = {
+        primary : budget.primary-totalPrimary,
+        upperPrimary : budget.upperPrimary-totalUpperPrimary,
+    }
    
     const printBill = () => {
         const rupees = numberToWords(budget.primary)
