@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 
 function Page() {
-    const bill = useSelector((state: any) => state.bills)
+    const bill : any = useSelector((state: any) => state.bills)
     const router = useRouter()
     console.log(bill)
     if(bill == null)
