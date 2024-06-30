@@ -18,6 +18,9 @@ export default function Home() {
     }
   )
 
+  let [slno, setSlno] = useState(0)
+  let [school, setSchool] = useState('')
+
   let [numberOfDays, setNumberOfDays] = useState(113)
   
   return (
@@ -25,6 +28,19 @@ export default function Home() {
       <div className="w-full md:border-2 p-4 md:rounded-lg  bg-opacity-40 space-y-5">
         <h1 className="text-center py-2 font-bold text-lg md:text-xl">MIDDAY MEAL BILL GENERATOR</h1>
         
+        <div className="space-y-1">
+          <h1 className="font-semibold md:text-lg">SL NO.</h1>
+          <Input type="number" className="h-14" placeholder="enter serial number" 
+          onChange={(e) => setSlno(parseInt(e.target.value))}/>
+        </div>
+
+        <div className="space-y-1">
+          <h1 className="font-semibold md:text-lg">School Name</h1>
+          <Input type="text" className="h-14" placeholder="enter school name" 
+          onChange={(e) => setSchool(e.target.value)}/>
+        </div>
+
+
         <div className="space-y-1">
           <h1 className="font-semibold md:text-lg">Budget for Primary Section</h1>
           <Input type="number" className="h-14" placeholder="budget amount" 
@@ -56,7 +72,7 @@ export default function Home() {
         </div>
 
         <div>
-          <Link href={`/bill?budgetPrimary=${budget.primary}&studentsPrimary=${students.primary}&budgetUpperPrimary=${budget.upperPrimary}&studentsUpperPrimary=${students.upperPrimary}&days=${numberOfDays}`}>
+          <Link href={`/bill?budgetPrimary=${budget.primary}&studentsPrimary=${students.primary}&budgetUpperPrimary=${budget.upperPrimary}&studentsUpperPrimary=${students.upperPrimary}&days=${numberOfDays}&slno=${slno}&school=${school}`}>
             <Button className="w-full h-14 text-lg">Generate</Button>
           </Link>
         </div>

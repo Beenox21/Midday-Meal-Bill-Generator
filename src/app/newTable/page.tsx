@@ -1,13 +1,18 @@
 'use client'
-import React from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useReducer } from 'react'
+import { useSelector } from 'react-redux'
 
 
 function Page() {
-    
-
+    const bill = useSelector((state: any) => state.bills)
+    const router = useRouter()
+    console.log(bill)
+    if(bill == null)
+        router.push('/')
     return (
         <div className='p-8' id='table'>
-            <h1 className='cursor-pointer hover:scale-105 hover:text-indigo-500 transition-all duration-150 text-xl font-bold text-center m-10'>Generate pdf</h1>
+
             <div className='border-b-0 border border-black p-2 text-sm'>
                 <div className='flex justify-between '>
                     <div>
@@ -36,285 +41,145 @@ function Page() {
             <table className='w-full text-xs'>
                 <tbody>
 
-                <tr>
-                    <td className='border border-black text-center'>SL NO. 
-                        <span className='font-bold text-red-500 ml-1'>609</span>
+                    <tr>
+                        <td className='border border-black text-center'>SL NO.
+                            <span className='font-bold text-red-500 ml-1'>{bill[1].slno}</span>
                         </td>
-                    <td className='border border-black text-center'>Date: 14/6/2024</td>
-                    <td className='border  border-black '>
-                        
+                        <td className='border border-black text-center'>Date: 14/6/2024</td>
+                        <td className='border  border-black '>
 
-                        State : Arunachal Pradesh <br/>
-                        State Code : 12    
-            
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <td className='border border-black' colSpan={2}>
-                        The Deputy Director of School Education <br/>
-                        Changlang (AP)<br/>
-                        MDM 2023-2024 (113 days)
-                    </td>
-                    <td className='border border-black'>
-                        Vehicle No. AR-20-5247 <br/>
-                        Place of Supply : <strong>GUPS LONGKHAM PONTHAI</strong>
-                    </td>
-                </tr>
-                
+
+                            State : Arunachal Pradesh <br />
+                            State Code : 12
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className='border border-black' colSpan={2}>
+                            The Deputy Director of School Education <br />
+                            Changlang (AP)<br />
+                            MDM 2023-2024 (113 days)
+                        </td>
+                        <td className='border border-black'>
+                            Vehicle No. AR-20-5247 <br />
+                            Place of Supply : <strong>{bill[1].school}</strong>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
 
             <table className='w-full text-xs'>
                 <thead>
-                <tr>
-                    <td className='border border-black border-t-0'>QNTY.</td>
-                    <td className='border border-black border-t-0'>Description</td>
-                    <td className='border border-black border-t-0'>RATE</td>
-                    <td className='border border-black border-t-0'>Taxable <br/> Value 0%</td>
-                    <td className='border border-black border-t-0'>Taxable <br/> Value 5%</td>
-                    <td className='border border-black border-t-0'>Taxable <br/> Value 12%</td>
-                    <td className='border border-black border-t-0'>Taxable <br/> Value 18%</td>
-                    <td className='border border-black border-t-0'>Taxable <br/> Value 28%</td>
-                    <td className='text-center border border-t-0 border-black'>TOTAL <br/> AMOUNT</td>
-                </tr>
+                    <tr>
+                        <td className='border border-black border-t-0'>QNTY.</td>
+                        <td className='border border-black border-t-0'>Description</td>
+                        <td className='border border-black border-t-0'>RATE</td>
+                        <td className='border border-black border-t-0'>Taxable <br /> Value 0%</td>
+                        <td className='border border-black border-t-0'>Taxable <br /> Value 5%</td>
+                        <td className='border border-black border-t-0'>Taxable <br /> Value 12%</td>
+                        <td className='border border-black border-t-0'>Taxable <br /> Value 18%</td>
+                        <td className='border border-black border-t-0'>Taxable <br /> Value 28%</td>
+                        <td className='text-center border border-t-0 border-black'>TOTAL <br /> AMOUNT</td>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Potato</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
 
-                </tr>
+                    {bill[1].items.map((item: any, index: any) => (
+                        <tr key={index}>
+                            <td className='border border-black'>{item.qtyPrimary}</td>
+                            <td className='border border-black'>{item.name}</td>
+                            <td className='text-right border border-black'>{item.rate}/-</td>
+                            <td className='border border-black'></td>
+                            <td className='border border-black'></td>
+                            <td className='border border-black'></td>
+                            <td className='border border-black'></td>
+                            <td className='border border-black'></td>
+                            <td className='border border-black text-right'>{item.totalPrimary}</td>
 
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Onion</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                        </tr>
+                    ))}
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Salt</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                    <tr>
+                        <td className='border border-black'>-</td>
+                        <td className='border border-black'>G. Vegetables</td>
+                        <td className='text-right border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black text-right'>{bill[1].veg}</td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Masoor Dal</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                    </tr>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Mustard Oil</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                    <tr>
+                        <td className='border border-black font-semibold' colSpan={2}> Bank Details </td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Nutrela</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                        <td className='text-right border border-black font-semibold'>Total before Tax</td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black text-right'></td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Dry Peas</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                    </tr>
+                    <tr>
+                        <td className='border border-black ' colSpan={2}> Bank: State Bank of India </td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Dry Chilly</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                        <td className='text-right border border-black '>Add: CGST</td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black text-right'></td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Egg</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                    </tr>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Haldi Powder</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                    <tr>
+                        <td className='border border-black ' colSpan={2}> Branch: Bordumsa</td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Sabji Masala</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                        <td className='text-right border border-black '>Add: SGST</td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black text-right'></td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Pas Pooran</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                    </tr>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'>24 kg</td>
-                    <td className='border border-black'>Firewood</td>
-                    <td className='text-right border border-black'>25/-</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                    <tr>
+                        <td className='border border-black ' colSpan={2}> A/c. No.: 38041710002</td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black'> - </td>
-                    <td className='border border-black'>G. Vegetables</td>
-                    <td className='text-right border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>600</td>
+                        <td className='text-right border border-black '>Add: IGST</td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black text-right'></td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black font-semibold' colSpan={2}> Bank Details </td>
-                    
-                    <td className='text-right border border-black font-semibold'>Total before Tax</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'>1225</td>
+                    </tr>
+                    <tr>
+                        <td className='border border-black ' colSpan={2}> IFSC: SBIN0009407</td>
 
-                </tr>
-                <tr>
-                    <td className='border border-black ' colSpan={2}> Bank: State Bank of India </td>
-                    
-                    <td className='text-right border border-black '>Add: CGST</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'></td>
+                        <td className='text-right border border-black font-semibold'>Total after Tax</td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black'></td>
+                        <td className='border border-black text-right font-bold'>{bill[1].budget.primary}</td>
 
-                </tr>
-
-                <tr>
-                    <td className='border border-black ' colSpan={2}> Branch: Bordumsa</td>
-                    
-                    <td className='text-right border border-black '>Add: SGST</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'></td>
-
-                </tr>
-
-                <tr>
-                    <td className='border border-black ' colSpan={2}> A/c. No.: 38041710002</td>
-                    
-                    <td className='text-right border border-black '>Add: IGST</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right'></td>
-
-                </tr>
-                <tr>
-                    <td className='border border-black ' colSpan={2}> IFSC: SBIN0009407</td>
-                    
-                    <td className='text-right border border-black font-semibold'>Total after Tax</td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black'></td>
-                    <td className='border border-black text-right font-bold'>9232</td>
-
-                </tr>
+                    </tr>
                 </tbody>
             </table>
             <div className='pt-5 border border-black border-t-0 p-2'>
-                <span className='mr-1 font-bold'>Rupees:</span><i>Nine thousand two hundred thirty two only.</i>
+                <span className='mr-1 font-bold'>Rupees:</span><i>{bill[1].rupees}</i>
                 <h1 className='mt-5 font-bold text-right'>M/s MURARI ENTERPRISES</h1>
             </div>
 

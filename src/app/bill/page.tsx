@@ -1,20 +1,29 @@
 'use client'
+import { Button } from "@/components/ui/button";
 import { Table, TableBody,  TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useSearchParams } from "next/navigation";
+import { addBill } from "@/features/bill/billSlice";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
 
 
 function Bill() {
+    const router = useRouter()
+    const dispatch = useDispatch()
     const searchParams = useSearchParams()
     const budget : any = {
         primary : searchParams.get('budgetPrimary'),
         upperPrimary : searchParams.get('budgetUpperPrimary')
     }
-
+    const slno : any = searchParams.get('slno')
+    const school : any = searchParams.get('school')
     const students : any = {
         primary : searchParams.get('studentsPrimary'),
         upperPrimary : searchParams.get('studentsUpperPrimary')
     }
+
+
 
     let items : any= [
         {
@@ -194,7 +203,24 @@ function Bill() {
             upperPrimary : budget.upperPrimary-totalUpperPrimary,
         })
 
-    }, [budget])
+    }, [])
+   
+    const printBill = () => {
+        const rupees = numberToWords(budget.primary)
+        let newRupees = rupees[0].toUpperCase()
+        newRupees += rupees.slice(1) + ' only.'
+        console.log(newRupees)
+        const newBill = {
+            veg : veg.primary,
+            budget : budget,
+            rupees : newRupees,
+            items : items,
+            slno : slno,
+            school : school
+        }
+        dispatch(addBill(newBill))
+        router.push('/newTable')
+    }
 
     return (
 
@@ -280,9 +306,62 @@ function Bill() {
 
                 </TableBody>
             </Table>
+
+            <div className="w-full flex h-20 justify-center items-center pb-5">
+            <Button className=" " onClick={printBill}>Print Bill</Button>
+
+            </div>
         </div>
 
     )
 }
 
 export default Bill
+
+
+
+
+const a = [
+    '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 
+    'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 
+    'eighteen', 'nineteen'
+  ];
+  const b = [
+    '', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
+  ];
+  
+  function numberToWords(num : any) {
+    if (num === 0) return 'zero';
+  
+    const makeWords = (n : any, s : any)  => {
+      let str = '';
+      if (n > 19) {
+        str += b[Math.floor(n / 10)] + ' ' + a[n % 10] + ' ';
+      } else {
+        str += a[n] + ' ';
+      }
+      if (n) {
+        str += s;
+      }
+      return str;
+    };
+  
+    let output = '';
+    output += makeWords(Math.floor(num / 1e7), 'crore ');
+    output += makeWords(Math.floor((num / 1e5) % 100), 'lakh ');
+    output += makeWords(Math.floor((num / 1e3) % 100), 'thousand ');
+    output += makeWords(Math.floor((num / 100) % 10), 'hundred ');
+  
+    if (num > 100 && num % 100 > 0) {
+      output += 'and ';
+    }
+  
+    output += makeWords(num % 100, '');
+    
+    return output.trim();
+  }
+  
+  
+  
+  
+  
