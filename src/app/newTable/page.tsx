@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import React, { useReducer } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 
 
@@ -43,7 +43,7 @@ function Page() {
 
                     <tr>
                         <td className='border border-black text-center'>SL NO.
-                            <span className='font-bold text-red-500 ml-1'>{bill[1].slno}</span>
+                            <span className='font-bold text-red-500 ml-1'>{bill[1].slno!}</span>
                         </td>
                         <td className='border border-black text-center'>Date: 14/6/2024</td>
                         <td className='border  border-black '>
