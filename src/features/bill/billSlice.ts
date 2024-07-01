@@ -8,7 +8,16 @@ const initialState = {
             veg : 0,
             budget : 0,
             rupees : '',
-            items : [],
+            items : [{
+                qtyPrimary : 0,
+                qtyUPrimary : 0,
+                name: '',
+                rate: 0,
+                totalPrimary: 0,
+                totalUpperPrimary : 0,
+                individualRatePrimary: 0,
+                individualRateUpperPrimary : 0
+            }],
             slno : 0,
             school : ''
         }
