@@ -1,15 +1,21 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 
 function Page() {
     const bill : any = useSelector((state: any) => state.bills)
     const router = useRouter()
-    console.log(bill)
-    if(bill == null)
-        router.push('/')
+    useEffect(() => {
+        if (!bill || Object.keys(bill).length === 0) {
+          router.push('/');
+        }
+      }, [bill, router]);
+    
+      if (!bill || Object.keys(bill).length === 0) {
+        return null; 
+      }
     return (
         <div className='p-8' id='table'>
 
@@ -43,7 +49,7 @@ function Page() {
 
                     <tr>
                         <td className='border border-black text-center'>SL NO.
-                            <span className='font-bold text-red-500 ml-1'>{bill[1].slno!}</span>
+                            <span className='font-bold text-red-500 ml-1'>{bill[1].slno}</span>
                         </td>
                         <td className='border border-black text-center'>Date: 14/6/2024</td>
                         <td className='border  border-black '>
