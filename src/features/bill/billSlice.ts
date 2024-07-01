@@ -1,10 +1,4 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { exportTraceState } from "next/dist/trace";
-
-// const initialState = {
-//     bills : [{id:1,primary : 0,
-//         upperPrimary : 0}]
-// }
 
 
 const initialState = {
