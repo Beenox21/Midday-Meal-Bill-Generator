@@ -94,7 +94,7 @@ function Page() {
                 </thead>
                 <tbody>
 
-                    {bill[1].items.map((item: any, index: any) => (
+                    {bill[len-1].items.map((item: any, index: any) => (
                         <tr key={index}>
                             <td className='border border-black'>{item.qtyPrimary}</td>
                             <td className='border border-black'>{item.name}</td>
