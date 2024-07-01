@@ -16,6 +16,8 @@ function Page() {
       if (!bill || Object.keys(bill).length === 0) {
         return null; 
       }
+
+      const len = bill.length
     return (
         <div className='p-8' id='table'>
 
@@ -49,7 +51,7 @@ function Page() {
 
                     <tr>
                         <td className='border border-black text-center'>SL NO.
-                            <span className='font-bold text-red-500 ml-1'>{bill[1].slno}</span>
+                            <span className='font-bold text-red-500 ml-1'>{bill[len-1].slno}</span>
                         </td>
                         <td className='border border-black text-center'>Date: 14/6/2024</td>
                         <td className='border  border-black '>
@@ -69,7 +71,7 @@ function Page() {
                         </td>
                         <td className='border border-black'>
                             Vehicle No. AR-20-5247 <br />
-                            Place of Supply : <strong>{bill[1].school}</strong>
+                            Place of Supply : <strong>{bill[len-1].school}</strong>
                         </td>
                     </tr>
 
@@ -116,7 +118,7 @@ function Page() {
                         <td className='border border-black'></td>
                         <td className='border border-black'></td>
                         <td className='border border-black'></td>
-                        <td className='border border-black text-right'>{bill[1].veg}</td>
+                        <td className='border border-black text-right'>{bill[len-1].veg}</td>
 
                     </tr>
 
@@ -179,13 +181,13 @@ function Page() {
                         <td className='border border-black'></td>
                         <td className='border border-black'></td>
                         <td className='border border-black'></td>
-                        <td className='border border-black text-right font-bold'>{bill[1].budget.primary}</td>
+                        <td className='border border-black text-right font-bold'>{bill[len-1].budget.primary}</td>
 
                     </tr>
                 </tbody>
             </table>
             <div className='pt-5 border border-black border-t-0 p-2'>
-                <span className='mr-1 font-bold'>Rupees:</span><i>{bill[1].rupees}</i>
+                <span className='mr-1 font-bold'>Rupees:</span><i>{bill[len-1].rupees}</i>
                 <h1 className='mt-5 font-bold text-right'>M/s MURARI ENTERPRISES</h1>
             </div>
 
